@@ -1,14 +1,14 @@
 package ru.alisa.calcapp.main;
 
 
+import ru.alisa.calcapp.service.ResultWriterService;
 import ru.alisa.calcapp.util.Calculator;
 
 import java.util.Scanner;
 
 
 public class _Main {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("Введите первое число");
         Scanner sc = new Scanner(System.in);
         int num1 = sc.nextInt();
@@ -19,19 +19,17 @@ public class _Main {
         int res;
         switch (operation) {
             case "+":
-                res = ru.alisa.calcapp.util.Calculator.added(num1, num2);
-                ru.alisa.calcapp.service.ResultWriterService.writeResult(num1, num2, res, "Сумма");
+                res = Calculator.summ(num1, num2);
+                ResultWriterService.writeResult(num1, num2, res, "Сумма");
             case "-":
                 res = Calculator.deduct(num1, num2);
-                ru.alisa.calcapp.service.ResultWriterService.writeResult(num1, num2, res, "Разность");
+                ResultWriterService.writeResult(num1, num2, res, "Разность");
             case "*":
                 res = Calculator.multiply(num1, num2);
-                ru.alisa.calcapp.service.ResultWriterService.writeResult(num1, num2, res, "Произведение");
+                ResultWriterService.writeResult(num1, num2, res, "Произведение");
                 break;
             default:
                 System.out.println("Ошибка");
         }
-
-
     }
 }
